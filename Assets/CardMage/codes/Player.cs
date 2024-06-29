@@ -20,24 +20,7 @@ public class Player : MonoBehaviour
     public float maxdrawpoint;
     public float drawrecovery;
     public float movespeed;
-
-
-    [Header("Bar")]
-    public GameObject nullhpbar;
-    public GameObject hpbarobject;
-    Slider hpbarslider;
-    RectTransform hpbarrect;
-    public GameObject hpcanvas;
-    //
-    public GameObject mpbar;
-    Slider mpbarslider;
-    //
-    public GameObject nulldrawbar;
-    public GameObject drawbarobject;
-    Slider drawbarslider;
-    RectTransform drawbarrect;
-
-
+    
 
     [Header("Skills")]
     public GameObject fireball;
@@ -77,25 +60,12 @@ public class Player : MonoBehaviour
         drawpoint = 0;
         manarecovery = 0.5f;
         drawrecovery = 0.5f;
-       //hpbarInit
-        nullhpbar = Instantiate(hpbarobject, hpcanvas.transform);
-        hpbarslider = nullhpbar.GetComponentInChildren<Slider>();
-        hpbarrect = nullhpbar.GetComponent<RectTransform>();
-        mpbarslider = mpbar.GetComponent<Slider>();
-        //drawbraInit
-        nulldrawbar = Instantiate(drawbarobject, hpcanvas.transform);
-        drawbarslider = nulldrawbar.GetComponentInChildren<Slider>();
-        drawbarrect = nulldrawbar.GetComponent<RectTransform>();
-       
+  
         StartCoroutine(AutoAttack());
     }
 
     private void FixedUpdate()
     {
-        HpBarUpdate();
-        MpBarUpdate();
-        DrawBarUpdate();
-
         if (runOn)
         {
             transform.Translate(Vector3.right * movespeed * Time.fixedDeltaTime);   
@@ -127,31 +97,7 @@ public class Player : MonoBehaviour
 
     }
 
-   
-
-    void HpBarUpdate()
-    {
-        Vector3 rect = RectTransformUtility.WorldToScreenPoint(Camera.main, new Vector3(transform.position.x + 0.05f, transform.position.y - 0.1f, transform.position.z));
-        hpbarrect.anchoredPosition = rect;
-
-        float curHealth = health;
-        float maxHealth = maxhealth;
-        hpbarslider.value = curHealth / maxhealth;
-    }
-    void MpBarUpdate()
-    {
-        float curMp = mana;
-        float maxMp = maxmana;
-        mpbarslider.value = mana / maxmana;
-    }
-    void DrawBarUpdate()
-    {
-        Vector3 rect = RectTransformUtility.WorldToScreenPoint(Camera.main, new Vector3(transform.position.x + 0.05f, transform.position.y - 0.2f, transform.position.z));
-        drawbarrect.anchoredPosition = rect;
-        drawbarslider.value = drawpoint / maxdrawpoint;
-    }
-
-
+  
     public void Damagecalculator(float Damage)
     {
         if (!islive)
