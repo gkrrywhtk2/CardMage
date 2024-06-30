@@ -54,9 +54,7 @@ public class Player : MonoBehaviour
         islive = true;
         health = maxhealth;
         drawpoint = 0;
-        drawrecovery = 0.5f;
-  
-      
+        drawrecovery = 0.5f; 
     }
     
 
@@ -101,21 +99,6 @@ public class Player : MonoBehaviour
        
     }
 
-    public void StageUpOn()
-    {
-        StartCoroutine(StageUP());
-    }
-
-    IEnumerator StageUP()
-    {
-        anim.SetBool("Run", true);
-        runOn = true;
-        movespeed = 3;
-        yield return new WaitForSeconds(2f);
-        anim.SetBool("Run", false);
-        runOn = false;
-        movespeed = 0;
-    }
     public void BasicAttackStart()
     {
         if (basicAttack != null)

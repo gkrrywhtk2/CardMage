@@ -2114,7 +2114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.021979094, g: 1, b: 0, a: 0.15686275}
+  m_Color: {r: 0.021979094, g: 1, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3082,7 +3082,6 @@ GameObject:
   - component: {fileID: 1599048436}
   - component: {fileID: 1599048435}
   - component: {fileID: 1599048438}
-  - component: {fileID: 1599048437}
   - component: {fileID: 1599048439}
   m_Layer: 0
   m_Name: background_0
@@ -3150,19 +3149,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599048433}
   m_CullTransparentMesh: 1
---- !u!114 &1599048437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599048433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5c464375aff14a1296c96c234291818, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Rect: {fileID: 1965605233}
 --- !u!61 &1599048438
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3269,7 +3255,6 @@ GameObject:
   - component: {fileID: 1668547578}
   - component: {fileID: 1668547577}
   - component: {fileID: 1668547576}
-  - component: {fileID: 1668547575}
   - component: {fileID: 1668547574}
   m_Layer: 0
   m_Name: background_0
@@ -3320,19 +3305,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1668547575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668547572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5c464375aff14a1296c96c234291818, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Rect: {fileID: 267375987}
 --- !u!61 &1668547576
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3625,7 +3597,6 @@ GameObject:
   - component: {fileID: 1714503151}
   - component: {fileID: 1714503150}
   - component: {fileID: 1714503153}
-  - component: {fileID: 1714503152}
   - component: {fileID: 1714503154}
   m_Layer: 0
   m_Name: background_0
@@ -3693,19 +3664,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714503148}
   m_CullTransparentMesh: 1
---- !u!114 &1714503152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1714503148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5c464375aff14a1296c96c234291818, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Rect: {fileID: 1918320869}
 --- !u!61 &1714503153
 BoxCollider2D:
   m_ObjectHideFlags: 0
