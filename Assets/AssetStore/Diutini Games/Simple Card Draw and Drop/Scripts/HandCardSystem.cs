@@ -16,6 +16,7 @@ namespace SimpleCardDrawAndSpread_HandCard
         public Player player;
         [Header("Card ID")]
         public int cardId;
+        public int cardType;
        
         public int nowcardlevel;
 
@@ -54,15 +55,15 @@ namespace SimpleCardDrawAndSpread_HandCard
 
            
         }
-     public void CardSetting(CardData data, int cardlevel)
+         public void CardSetting(CardData data, int cardlevel)
        {
            
 
             CardIcon_Sprite.sprite = data.cardicon;
             cardId = data.cardid;
-    
+            cardType = (int)data.cardType;
             nowcardlevel = cardlevel;
-
+            
             switch (nowcardlevel)
             {
                 case 1:
@@ -215,7 +216,7 @@ namespace SimpleCardDrawAndSpread_HandCard
                     _CardDrawSystem.PlayerHandCardList.RemoveAt(HandCardNumber);
                     _CardDrawSystem.CardLayerCheckManager();
                     _CardDrawSystem.CardSpreadSettingManager();
-                    GameManager.instanse.player.CardUnderstand(cardId,nowcardlevel);
+                    GameManager.instanse.MagicManager.CardUnderstand(cardType, cardId,nowcardlevel);
                    
                     //When the numerical alignment is complete, use automatic movement to move the card in your hand to that position.
                     for (int i = 0; i < _CardDrawSystem.PlayerHandCardList.Count; i++)

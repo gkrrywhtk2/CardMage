@@ -6,18 +6,23 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Card", menuName = "scriptble object/CardData")]
 public class CardData : ScriptableObject
 {
-    public enum CardType {Skill, buff, install, fellow, extinction}
 
+
+    public enum CardType
+    {
+      fire,Basic
+    }
+   
 
     [Header("# Main Info")]
 
-    public CardType cardType;
     public int cardid;
+    public CardType cardType;
     public string cardname0;
     public string cardname1;
     public string cardname2;
-
-    public int cardcost;
+    public int objectSpeed;
+    
 
     [TextArea]
     public string carddesclevel0;
@@ -30,4 +35,5 @@ public class CardData : ScriptableObject
     public int basecount;
     public float[] damages;
     public int[] counts;
+
 }

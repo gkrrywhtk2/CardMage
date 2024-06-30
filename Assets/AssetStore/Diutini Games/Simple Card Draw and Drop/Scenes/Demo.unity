@@ -2305,6 +2305,7 @@ MonoBehaviour:
   pool: {fileID: 208866930}
   hud: {fileID: 623643274}
   spawnManager: {fileID: 286089410}
+  MagicManager: {fileID: 1670175410}
   cardDrawSystem: {fileID: 2129179422}
   isPlay: 0
   CardOn: 01010101
@@ -3385,6 +3386,8 @@ GameObject:
   - component: {fileID: 1670175406}
   - component: {fileID: 1670175408}
   - component: {fileID: 1670175409}
+  - component: {fileID: 1670175411}
+  - component: {fileID: 1670175410}
   m_Layer: 0
   m_Name: player_FireMage
   m_TagString: Player
@@ -3494,16 +3497,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b225ba44cf65c4513b33364371ad5042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  islive: 0
   health: 0
   maxhealth: 100
-  islive: 0
   drawpoint: 0
   maxdrawpoint: 10
   drawrecovery: 0
-  movespeed: 0
-  fireball: {fileID: 5732307051151191813, guid: e7999a402fa6d41af87c8408e02f04be, type: 3}
-  s_0fireball: {fileID: 6442547756977020209, guid: 38a83725356a14f57b2165cfbadf1c9c, type: 3}
-  runOn: 0
 --- !u!61 &1670175406
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3585,6 +3584,31 @@ MonoBehaviour:
   hpbarSlider: {fileID: 1666801526}
   drawBar: {fileID: 249850595}
   drawBarSlider: {fileID: 249850596}
+--- !u!114 &1670175410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670175401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896b28ba01eb84b7699b073d29d887be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireMage: {fileID: 1670175411}
+--- !u!114 &1670175411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670175401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f22778e87ef6421895d87d45b0851be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1714503148
 GameObject:
   m_ObjectHideFlags: 0

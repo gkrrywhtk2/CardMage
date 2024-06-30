@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public PoolManager pool;
     public HUD hud;
     public MonsterSpawnManager spawnManager;
+    public Player_CardMagicManager MagicManager;
     public CardDrawSystem cardDrawSystem;
     public bool isPlay;
 
