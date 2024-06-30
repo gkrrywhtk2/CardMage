@@ -170,11 +170,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.3
   health: 0
-  maxhealth: 100
+  maxhealth: 10
   Damage: 0
   ishit: 0
-  nullhpbar: {fileID: 0}
-  hpbarprefab: {fileID: 6748635510515754069, guid: bc86f0540a14547eb93332c218a5aaf8, type: 3}
-  hpcanvas: {fileID: 0}
-  hpbarRect: {fileID: 0}
-  hpslide: {fileID: 0}

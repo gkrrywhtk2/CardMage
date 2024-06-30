@@ -5,21 +5,38 @@ using UnityEngine;
 public class MonsterSpawnManager : MonoBehaviour
 {
     // Start is called before the first frame update
-   
+
     public Transform spawnpoint;
-    public GameObject mob_0;
-    
- 
-    public void Awake()
+    public GameObject startButtonTest;
+  
+    Coroutine mobSpawnCoroutine = null;
+
+
+    public void SpawnStart()
     {
-        StartCoroutine(SpawnMonster());
+        if (mobSpawnCoroutine != null)
+        {
+            StopCoroutine(mobSpawnCoroutine);
+        }
+        mobSpawnCoroutine = StartCoroutine(SpawnMonster());
+        startButtonTest.gameObject.SetActive(false);
+    }
+    public void SpawnStop()
+    {
+        StopCoroutine(mobSpawnCoroutine);
     }
 
+
     IEnumerator SpawnMonster()
-   {
-        Instantiate(mob_0, new Vector2(spawnpoint.transform.position.x, spawnpoint.transform.position.y),Quaternion.identity);
-        yield return new WaitForSeconds(10f);
-        StartCoroutine(SpawnMonster());
+    {
+        if (GameManager.instanse.isPlay == true)
+        {
+            GameObject monster_0 = GameManager.instanse.pool.Get(0);
+            monster_0.transform.position = new Vector2(spawnpoint.transform.position.x, spawnpoint.transform.position.y);
+            yield return new WaitForSeconds(10f);
+            SpawnStart();
+        }
+
     }
 
 }

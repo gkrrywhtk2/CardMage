@@ -16,15 +16,13 @@ namespace SimpleCardDrawAndSpread_HandCard
         public Player player;
         [Header("Card ID")]
         public int cardId;
-        public int firstCardCost;
-        public int nowcost;
+       
         public int nowcardlevel;
 
         [Header("Card Image")]
         public SpriteRenderer CardIcon_Sprite;
         public SpriteRenderer[] CardLayers;
-        public SpriteRenderer CardCostImage;
-        public List<Sprite> CardCosts;
+ 
         public TMP_Text cardtext;
         public TMP_Text cardtext_exp;
 
@@ -62,9 +60,7 @@ namespace SimpleCardDrawAndSpread_HandCard
 
             CardIcon_Sprite.sprite = data.cardicon;
             cardId = data.cardid;
-            firstCardCost = data.cardcost;
-            CardCostImage.sprite = CardCosts[firstCardCost];
-            nowcost = firstCardCost;
+    
             nowcardlevel = cardlevel;
 
             switch (nowcardlevel)
@@ -158,9 +154,7 @@ namespace SimpleCardDrawAndSpread_HandCard
             if (CardUseLock == false)
             {
          
-                GameManager.instanse.uicard.gameObject.SetActive(true);
-            
-                GameManager.instanse.uicard.show(CardIcon_Sprite, cardtext, cardtext_exp, nowcost);
+                
 
                 //Save the mouse position you clicked on and exit the auto-alignment of the clicked cards you clicked on.
 
@@ -215,16 +209,14 @@ namespace SimpleCardDrawAndSpread_HandCard
             if (CardUseLock == false)
             {
              
-                if (Vector2.Distance(this.transform.position, _CardDrawSystem.CardUseGround.position) < _CardDrawSystem.CardUseDistance && GameManager.instanse.player.mana > nowcost)
+                if (Vector2.Distance(this.transform.position, _CardDrawSystem.CardUseGround.position) < _CardDrawSystem.CardUseDistance)
                 {
                     //Remove the used cards from the list and re-align them with the layers of the cards in your hand.
                     _CardDrawSystem.PlayerHandCardList.RemoveAt(HandCardNumber);
                     _CardDrawSystem.CardLayerCheckManager();
                     _CardDrawSystem.CardSpreadSettingManager();
-                    GameManager.instanse.player.CardUnderstand(cardId,nowcost,nowcardlevel);
-                    GameManager.instanse.hud.CardUiReSet();
-
-
+                    GameManager.instanse.player.CardUnderstand(cardId,nowcardlevel);
+                   
                     //When the numerical alignment is complete, use automatic movement to move the card in your hand to that position.
                     for (int i = 0; i < _CardDrawSystem.PlayerHandCardList.Count; i++)
                     {
@@ -238,14 +230,10 @@ namespace SimpleCardDrawAndSpread_HandCard
                 {
                     //Return to original position.
                     HandSpreadTrigger = true;
-                    if(GameManager.instanse.player.mana < nowcost)
-                    {
-                        Debug.Log("마나가부족합니다");
-                    }
+                  
 
                 }
-                GameManager.instanse.uicard.gameObject.SetActive(false);
-
+               
             }
 
 

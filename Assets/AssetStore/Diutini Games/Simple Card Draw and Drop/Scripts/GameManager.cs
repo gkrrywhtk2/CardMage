@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SimpleCardDrawAndSpread_CardDrag;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,9 +9,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instanse;
     public Player player;
     public PoolManager pool;
-    public StageManager stagemanager;
     public HUD hud;
-    public UiCard uicard;
+    public MonsterSpawnManager spawnManager;
+    public CardDrawSystem cardDrawSystem;
     public bool isPlay;
 
     [Header("Can Use Card")]
@@ -30,27 +31,18 @@ public class GameManager : MonoBehaviour
             CardLevels[index] = 1;
         }
 
-       
         Application.targetFrameRate = 60;
         instanse = this;
+   
+       
+    }
+    public void GameStartButton()
+    {
         isPlay = true;
-       
-    }
-    private void Start()
-    {
-        SetResolution(); // 초기에 게임 해상도 고정
+        instanse.spawnManager.SpawnStart();
+        instanse.player.BasicAttackStart();
+        instanse.cardDrawSystem.FastWalk(3);
     }
 
-    /* 해상도 설정하는 함수 */
-    public void SetResolution()
-    {
-        int setWidth = 1080; // 사용자 설정 너비
-        int setHeight = 1920; // 사용자 설정 높이
-
-     
-
-        Screen.SetResolution(setWidth, setHeight, true); // SetResolution 함수 제대로 사용하기
-
-       
-    }
+   
 }

@@ -9,13 +9,12 @@ public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    Coroutine basicAttack = null;
+
     [Header("PlayerStat")]
     public float health;
     public float maxhealth;
     public bool islive;
-    public float mana;
-    public float maxmana;
-    public float manarecovery;
     public float drawpoint;
     public float maxdrawpoint;
     public float drawrecovery;
@@ -44,11 +43,9 @@ public class Player : MonoBehaviour
     public void Awake() 
     {
         anim = GetComponent<Animator>();
-        handcardSystem = FindObjectOfType<HandCardSystem>();
-        carddrawSystem = FindObjectOfType<CardDrawSystem>();
         scaner = GetComponent<Scaner>();
         Init();
-        carddrawSystem.FastWalk(3);//test
+      
       
     }
 
@@ -56,36 +53,26 @@ public class Player : MonoBehaviour
     {
         islive = true;
         health = maxhealth;
-        mana = 0;
         drawpoint = 0;
-        manarecovery = 0.5f;
         drawrecovery = 0.5f;
   
-        StartCoroutine(AutoAttack());
+      
     }
+    
 
     private void FixedUpdate()
     {
-        if (runOn)
-        {
-            transform.Translate(Vector3.right * movespeed * Time.fixedDeltaTime);   
-        }
-
-
-        if (runOn)
+        if (GameManager.instanse.isPlay != true)
             return;
-           
-        if(mana <= 10)
-        {
-            mana += manarecovery * Time.deltaTime;
-        }
+     
+        
         if(drawpoint <= 10)
         {
             drawpoint += drawrecovery * Time.deltaTime;
             if(drawpoint > 10)
             {
                 drawpoint = 0;
-                carddrawSystem.Button_CardDraw_Manager();
+                GameManager.instanse.cardDrawSystem.Button_CardDraw_Manager();
             }
         }
 
@@ -129,30 +116,38 @@ public class Player : MonoBehaviour
         runOn = false;
         movespeed = 0;
     }
-
-    IEnumerator AutoAttack()
+    public void BasicAttackStart()
     {
-        if (GameManager.instanse.isPlay)
+        if (basicAttack != null)
         {
-               if (!runOn)
-              {
-            anim.SetBool("Slash", true);
-            anim.SetBool("Ready", false);
-            yield return new WaitForSeconds(0.3f);
-            GameObject autoattack =  GameManager.instanse.pool.Get(1);
-            autoattack.transform.position = new Vector2(transform.position.x + 0.5f, transform.position.y + 0.3f);
-            autoattack.GetComponent<bullet>().Init(0);
-                }
-
-
-            yield return new WaitForSeconds(2f);
-            StartCoroutine(AutoAttack());
+            StopCoroutine(basicAttack);
         }
-        
-
-       
+        basicAttack = StartCoroutine(BasicAttackCoroutine());
     }
-    public void CardUnderstand(int cardid, int manacost, int CardLv)
+
+    IEnumerator BasicAttackCoroutine()
+    {
+        if (GameManager.instanse.isPlay == true)
+        if (scaner.targets == true)
+            {
+                anim.SetBool("Slash", true);
+                anim.SetBool("Ready", false);
+                yield return new WaitForSeconds(0.3f);
+                GameObject autoattack = GameManager.instanse.pool.Get(1);
+                autoattack.transform.position = new Vector2(transform.position.x + 0.5f, transform.position.y + 0.3f);
+                autoattack.GetComponent<bullet>().Init(0);
+                yield return new WaitForSeconds(2f);
+                BasicAttackStart();
+            }
+            else
+            {
+                yield return new WaitForSeconds(2f);
+                BasicAttackStart();
+            }
+           
+    }
+
+    public void CardUnderstand(int cardid, int CardLv)
     {
 
         switch (cardid)
@@ -171,7 +166,7 @@ public class Player : MonoBehaviour
 
                 break;
             case 2:
-                StartCoroutine(Card_2ManaCirculation());
+              
                 break;
             case 3:
                 GameObject Ignite = GameManager.instanse.pool.Get(3);
@@ -189,24 +184,17 @@ public class Player : MonoBehaviour
                
                 break;
         }
-        mana -= manacost;
+       
     }
 
     void Card_0_UseFastWalk(int cardlv)
     {
         int point = Random.Range(1, cardlv + 1);
         carddrawSystem.FastWalk(point);
-        Debug.Log(point);
+       
     }
 
-    IEnumerator Card_2ManaCirculation()
-    {
-        float nowmanarecovery = manarecovery;
-
-        manarecovery = nowmanarecovery + 1;
-        yield return new WaitForSeconds(2f);
-        manarecovery = nowmanarecovery;
-    }
+   
 }
 
 

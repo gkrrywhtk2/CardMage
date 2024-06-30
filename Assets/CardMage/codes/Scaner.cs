@@ -16,7 +16,7 @@ public class Scaner : MonoBehaviour
 
 
         RaycastHit2D target = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.3f), transform.right, scanrange, targetlayer);
-        // Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.3f), transform.right * scanrange, Color.yellow);
+        //Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.3f), transform.right * scanrange, Color.yellow);
         targets = target;
 
     }

@@ -14,13 +14,7 @@ public class Mob : MonoBehaviour
     public float Damage;
     public bool ishit;
 
-    [Header("HpBar")]
-    public GameObject nullhpbar;
-    public GameObject hpbarprefab;
-    public GameObject hpcanvas;
-    public RectTransform hpbarRect;
-    public Slider hpslide;
-
+    
     [Header("Animation")]
     Animator anim;
 
@@ -43,10 +37,7 @@ public class Mob : MonoBehaviour
     }
     public void Init()
     {
-        hpcanvas = GameObject.Find("UI_Canvas");
-        nullhpbar = Instantiate(hpbarprefab,hpcanvas.transform);
-        hpslide = nullhpbar.GetComponentInChildren<Slider>();
-        hpbarRect = nullhpbar.GetComponent<RectTransform>();
+ 
         health = maxhealth;
         speed = 0.3f;
         Damage = 0.5f;
@@ -64,12 +55,7 @@ public class Mob : MonoBehaviour
          rigid.MovePosition(rigid.position + nextVec);
         }
 
-        Vector3 rect = RectTransformUtility.WorldToScreenPoint(Camera.main, new Vector3(transform.position.x + 0.05f, transform.position.y - 0.1f, transform.position.z));
-        hpbarRect.anchoredPosition = rect;
-
-        float curHealth = health;
-        float maxHealth = maxhealth;
-        hpslide.value = curHealth / maxhealth;
+    
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -129,7 +115,7 @@ public class Mob : MonoBehaviour
     {
         coll.enabled = false;
         rigid.simulated = false;
-        nullhpbar.gameObject.SetActive(false);
+       
         anim.SetTrigger("IsDead");
         yield return new WaitForSeconds(3f);
         gameObject.SetActive(false);
