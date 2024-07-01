@@ -24,8 +24,8 @@ namespace SimpleCardDrawAndSpread_HandCard
         public SpriteRenderer CardIcon_Sprite;
         public SpriteRenderer[] CardLayers;
  
-        public TMP_Text cardtext;
-        public TMP_Text cardtext_exp;
+        public TMP_Text cardNameText;
+        public TMP_Text cardText;
 
 
 
@@ -47,38 +47,21 @@ namespace SimpleCardDrawAndSpread_HandCard
            
             _CardDrawSystem = FindObjectOfType<CardDrawSystem>();
             player = FindObjectOfType<Player>();
-            cardtext = GetComponentInChildren<TMP_Text>();
-            
+          //  cardNameText = GetComponentInChildren<TMP_Text>();
+            //cardText = GetComponentInChildren<TMP_Text>();
 
-
-          
-
-           
         }
-         public void CardSetting(CardData data, int cardlevel)
+         public void CardSetting(int cardId, int cardLevel)
        {
-           
 
-            CardIcon_Sprite.sprite = data.cardicon;
-            cardId = data.cardid;
-            cardType = (int)data.cardType;
-            nowcardlevel = cardlevel;
-            
-            switch (nowcardlevel)
-            {
-                case 1:
-                    cardtext_exp.text = data.carddesclevel0;
-                    cardtext.text = data.cardname0;
-                    break;
-                case 2:
-                    cardtext_exp.text = data.carddesclevel1;
-                    cardtext.text = data.cardname1;
-                    break;
-                case 3:
-                    cardtext_exp.text = data.carddesclevel2;
-                    cardtext.text = data.cardname2;
-                    break;
-            }
+
+            CardIcon_Sprite.sprite = _CardDrawSystem.data[cardId].cardSprite;
+            nowcardlevel = cardLevel;
+            cardNameText.text = _CardDrawSystem.data[cardId].cardNameKr;
+            cardText.text = _CardDrawSystem.data[cardId].cardTextKr;
+
+
+
         }
        
         // Update is called once per frame

@@ -34,6 +34,7 @@ namespace SimpleCardDrawAndSpread_CardDrag
         public List<Sprite> CardSprites;
         public float CardDrawDelay;
         [HideInInspector] public List<GameObject> PlayerHandCardList;
+        public List<List<int>> plyerDeckLists = new List<List<int>>();
 
         [Space(10)]
         public int FirstDrawCount;
@@ -66,7 +67,7 @@ namespace SimpleCardDrawAndSpread_CardDrag
         // Start is called before the first frame update
         void Start()
         {
-           
+            plyerDeckLists.Add(new List<int> { 0, 1 });
 
             //The first time you start a game, you draw a card as many as the FirstDrawCount number.
             // StartCoroutine(PlayerCardDrawManager(FirstDrawCount));
@@ -96,36 +97,32 @@ namespace SimpleCardDrawAndSpread_CardDrag
         public IEnumerator PlayerCardDrawManager(int CardCount)
         {
 
-            int Rnum_CardSprite;
+            
+            int PlayerDeckLength;
+            int cardId;
+            int thisCardLevel;
+
+
            
             for (int i = 0; i < CardCount; i++)
             {
-
-                while (true)
-                {
-                    Rnum_CardSprite = Random.Range(0, CardSprites.Count);
-                    if (GameManager.instanse.CardOn[Rnum_CardSprite] == true)
-                        break;
-                   
-                }
-                //Randomly determine the image for the card.
-              
-                
+                PlayerDeckLength = Random.Range(0, plyerDeckLists.Count);
+                cardId = plyerDeckLists[PlayerDeckLength][0];
+                thisCardLevel = plyerDeckLists[PlayerDeckLength][1];
 
                 //Create and set card objects.
-                GameObject newOb = Instantiate(CardOb, CardCreatePos.position, Quaternion.identity);
-                    newOb.transform.SetParent(CardHandPos, true);
+                   GameObject newOb = Instantiate(CardOb, CardCreatePos.position, Quaternion.identity);
+                   newOb.transform.SetParent(CardHandPos, true);
 
                     //Change the central image of the card that you created using Rnum_CardSprite, which contains arbitrary numbers.
-                    HandCardSystem input_HandCardSystem = newOb.GetComponent<HandCardSystem>();
+
+                HandCardSystem input_HandCardSystem = newOb.GetComponent<HandCardSystem>();
+
                 //input_HandCardSystem.CardIcon_Sprite.sprite = CardSprites[Rnum_CardSprite];
                // input_HandCardSystem.CardIcon_Sprite.sprite = data[Rnum_CardSprite].cardicon;
 
-
-
-
-                    input_HandCardSystem.CardSetting(data[Rnum_CardSprite], GameManager.instanse.CardLevels[Rnum_CardSprite]);
-             //   input_HandCardSystem.cardId = Rnum_CardSprite;
+                    input_HandCardSystem.CardSetting(cardId, thisCardLevel);
+                   //input_HandCardSystem.cardId = Rnum_CardSprite;
                   //  input_HandCardSystem.FirstCostSetting();
                 
                     //Save to list for use in card sorting.

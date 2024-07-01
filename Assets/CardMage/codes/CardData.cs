@@ -7,33 +7,32 @@ using UnityEngine;
 public class CardData : ScriptableObject
 {
 
-
     public enum CardType
     {
-      fire,Basic
+      basic,fire
     }
    
 
     [Header("# Main Info")]
 
-    public int cardid;
+    public int cardId;
     public CardType cardType;
-    public string cardname0;
-    public string cardname1;
-    public string cardname2;
-    public int objectSpeed;
-    
 
-    [TextArea]
-    public string carddesclevel0;
-    public string carddesclevel1;
-    public string carddesclevel2;
-    public Sprite cardicon;
+    [Header("# Language")]
+    public string cardNameKr;
+    public string cardTextKr;
+
+    [Header("# Image")]
+    
+    public Sprite cardSprite;
 
     [Header("# Level Data")]
-    public float basedamage;
-    public int basecount;
     public float[] damages;
     public int[] counts;
 
+    [Header("# Connect")]
+    public int objectSpeed;
+    public bool comboCard;
+
+   
 }
