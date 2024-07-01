@@ -12,23 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16fab8799998840458ba8f1c9342d06d, type: 3}
   m_Name: Card 0_FireBall
   m_EditorClassIdentifier: 
-  cardid: 0
-  cardType: 0
-  cardname0: "\uD654\uC5FC\uAD6C"
-  cardname1: "\uD654\uC5FC\uAD6C+"
-  cardname2: "\uD654\uC5FC\uAD6C++"
-  objectSpeed: 3
-  carddesclevel0: "\uD654\uC5FC \uAD6C\uCCB4\uB97C \uB0A0\uB824 \uD53C\uD574\uB97C
-    \uC90D\uB2C8\uB2E4."
-  carddesclevel1: "\uD654\uC5FC \uAD6C\uCCB4\uB97C \uB0A0\uB824 \uD53C\uD574\uB97C
-    \uC90D\uB2C8\uB2E4."
-  carddesclevel2: "\uD654\uC5FC \uAD6C\uCCB4\uB97C \uB0A0\uB824 \uD53C\uD574\uB97C
-    \uC90D\uB2C8\uB2E4."
-  cardicon: {fileID: 21300000, guid: 4e5a6ec754ce5f04f820c5c076692f27, type: 3}
-  basedamage: 0
-  basecount: 1
+  cardId: 0
+  cardType: 1
+  cardNameKr: "\uD654\uC5FC\uAD6C"
+  cardTextKr: "\uD654\uC5FC\uAD6C\uCCB4\uB97C \uB0A0\uB824 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
+  cardSprite: {fileID: 21300000, guid: fc5c105c2ba324b5c9512cbdb9386940, type: 3}
   damages:
   - 3
   - 5
   - 7
   counts: 010000000200000003000000
+  objectSpeed: 3
+  comboCard: 0
