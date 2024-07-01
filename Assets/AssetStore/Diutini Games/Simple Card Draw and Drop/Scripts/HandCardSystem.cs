@@ -47,20 +47,39 @@ namespace SimpleCardDrawAndSpread_HandCard
            
             _CardDrawSystem = FindObjectOfType<CardDrawSystem>();
             player = FindObjectOfType<Player>();
-          //  cardNameText = GetComponentInChildren<TMP_Text>();
-            //cardText = GetComponentInChildren<TMP_Text>();
+        
 
         }
          public void CardSetting(int cardId, int cardLevel)
        {
-
+            string namePlus = "";
+            if (cardLevel > 1)
+            {
+                namePlus = new string('+', cardLevel - 1);
+            }
 
             CardIcon_Sprite.sprite = _CardDrawSystem.data[cardId].cardSprite;
             nowcardlevel = cardLevel;
-            cardNameText.text = _CardDrawSystem.data[cardId].cardNameKr;
-            cardText.text = _CardDrawSystem.data[cardId].cardTextKr;
+            cardNameText.text = _CardDrawSystem.data[cardId].cardNameKr + namePlus;
 
+            float damageAmount = 0;
+            string cardTextTemplate = _CardDrawSystem.data[cardId].cardTextKr;
 
+            // damageAmount 설정 (데미지 배열이 존재하고, 유효한 인덱스인지 확인)
+            if (_CardDrawSystem.data[cardId].damages != null && cardLevel - 1 < _CardDrawSystem.data[cardId].damages.Length)
+            {
+                damageAmount = _CardDrawSystem.data[cardId].damages[cardLevel - 1];
+            }
+
+            // 포맷팅된 텍스트 설정 (플레이스홀더가 있을 때만)
+            if (cardTextTemplate.Contains("{0}"))
+            {
+                cardText.text = string.Format(cardTextTemplate, damageAmount);
+            }
+            else
+            {
+                cardText.text = cardTextTemplate;
+            }
 
         }
        

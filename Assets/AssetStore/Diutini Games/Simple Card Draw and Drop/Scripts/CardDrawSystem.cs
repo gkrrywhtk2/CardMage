@@ -67,7 +67,8 @@ namespace SimpleCardDrawAndSpread_CardDrag
         // Start is called before the first frame update
         void Start()
         {
-            plyerDeckLists.Add(new List<int> { 0, 1 });
+            plyerDeckLists.Add(new List<int> { 0, 2 });
+           
 
             //The first time you start a game, you draw a card as many as the FirstDrawCount number.
             // StartCoroutine(PlayerCardDrawManager(FirstDrawCount));

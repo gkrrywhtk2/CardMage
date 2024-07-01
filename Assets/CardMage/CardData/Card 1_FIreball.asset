@@ -12,20 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16fab8799998840458ba8f1c9342d06d, type: 3}
   m_Name: Card 1_FIreball
   m_EditorClassIdentifier: 
-  cardid: 1
-  cardType: 0
-  cardname0: "\uC810\uD654"
-  cardname1: "\uC810\uD654"
-  cardname2: "\uC810\uD654"
-  objectSpeed: 0
-  carddesclevel0: "\uADFC\uC811\uD55C \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
-  carddesclevel1: "\uADFC\uC811\uD55C \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
-  carddesclevel2: "\uADFC\uC811\uD55C \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
-  cardicon: {fileID: 21300000, guid: 02083fdd5d9ecb6408a58e8ad5ae5771, type: 3}
-  basedamage: 5
-  basecount: 0
+  cardId: 1
+  cardType: 1
+  cardNameKr: "\uC810\uD654"
+  cardTextKr: "\uC801\uC744 \uBD88\uD0DC\uC6CC \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
+  cardSprite: {fileID: 21300000, guid: 2dc9e8eaa096f47a28a76f8b4bfe1ce4, type: 3}
   damages:
   - 5
   - 7
   - 10
-  counts: 
+  counts: 000000000000000000000000
+  objectSpeed: 0
+  comboCard: 0
